@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة نقاط الولاء - معهد الخوارزمي للتدريب</title>
+    <!-- ربط ملف الـ CSS الخارجي -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div class="logo-text">
+                    <h1>معهد الخوارزمي للتدريب</h1>
+                    <span>نظام المكافآت ونقاط الولاء (Khwarizmi Points)</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#earn">كسب النقاط</a></li>
+                <li><a href="#market">متجر المكافآت</a></li>
+                <li><a href="#tiers">المستويات</a></li>
+                <li><a href="#history">سجل العمليات</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            
+            <!-- القائمة الجانبية: الملف الشخصي ورصيد النقاط -->
+            <aside class="profile-card">
+                <div class="avatar-container">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="صورة المتدرب">
+                    <div class="badge-tier" title="المستوى الذهبي"><i class="fa-solid fa-award"></i></div>
+                </div>
+                <h3>ريمان أحمد العتيبي</h3>
+                <p class="email">Reman@alkhwarizmi.com</p>
+
+                <div class="points-box">
+                    <h4>رصيد النقاط الحالي</h4>
+                    <div class="points-num" id="user-points">1,450</div>
+                    <span style="font-size: 0.8rem; color: #166534;">نقطة خوارزمي</span>
+                </div>
+
+                <div class="tier-progress-container">
+                    <div class="tier-info">
+                        <span>المستوى: <strong id="current-tier-name">الذهبي (Gold)</strong></span>
+                        <span>متبقي 50 للبلاتيني</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="tier-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="streak-counter">
+                    <i class="fa-solid fa-fire"></i>
+                    <span>سلسلة الدخول اليومي: 7 أيام متتالية!</span>
+                </div>
+            </aside>
+
+            <!-- محتوى لوحة التحكم الرئيسي -->
+            <div class="content-area">
+                
+                <!-- قسم كسب النقاط -->
+                <section id="earn" class="card">
+                    <h2 class="card-title"><i class="fa-solid fa-coins"></i> كسب نقاط خوارزمي (Khwarizmi Points)</h2>
+                    <div class="activity-grid">
+                        
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <h5>التسجيل في دورة تدريبية</h5>
+                                <span>ابدأ رحلة تطوير مهارتك التقنية</span>
+                            </div>
+                            <div class="activity-action">
+                                <span class="points-badge">+100 نقطة</span>
+                                <button class="btn" onclick="addPoints(100, 'التسجيل في دورة علوم الحاسب')">سجل الآن</button>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <h5>إنهاء درس تفاعلي</h5>
+                                <span>إكمال محتوى الأسبوع الدراسي</span>
+                            </div>
+                            <div class="activity-action">
+                                <span class="points-badge">+20 نقطة</span>
+                                <button class="btn" onclick="addPoints(20, 'إنهاء درس HTML/CSS')">إتمام الدرس</button>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <h5>اجتياز اختبار قصير</h5>
+                                <span>اختبر معلوماتك البرمجية</span>
+                            </div>
+                            <div class="activity-action">
+                                <span class="points-badge">+50 نقطة</span>
+                                <button class="btn" onclick="addPoints(50, 'اجتياز اختبار JavaScript')">إرسال الاختبار</button>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <h5>إكمال دورة كاملة</h5>
+                                <span>إنهاء كافة المهام والمشروع النهائي</span>
+                            </div>
+                            <div class="activity-action">
+                                <span class="points-badge">+300 نقطة</span>
+                                <button class="btn btn-success" onclick="addPoints(300, 'إكمال دورة تدريب الصيفي كاملة')">إنهاء الدورة</button>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <h5>كتابة تقييم للدورة</h5>
+                                <span>شاركنا رأيك البنّاء لتطوير المعهد</span>
+                            </div>
+                            <div class="activity-action">
+                                <span class="points-badge">+30 نقطة</span>
+                                <button class="btn" onclick="addPoints(30, 'كتابة تقييم الدورة')">قيم الآن</button>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-info">
+                                <h5>دعوة صديق للمعهد</h5>
+                                <span>ادع زميلاً لك للتسجيل في البرامج</span>
+                            </div>
+                            <div class="activity-action">
+                                <span class="points-badge">+200 نقطة</span>
+                                <button class="btn" onclick="addPoints(200, 'دعوة صديق جديد للمعهد')">دعوة صديق</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- قسم متجر المكافآت -->
+                <section id="market" class="card">
+                    <h2 class="card-title"><i class="fa-solid fa-store"></i> متجر المكافآت والمزايا الحقيقية</h2>
+                    <div class="rewards-grid">
+                        
+                        <div class="reward-card">
+                            <div class="reward-img"><i class="fa-solid fa-percent"></i></div>
+                            <div class="reward-details">
+                                <div>
+                                    <h5>خصم 20% على الدورات</h5>
+                                    <p>استمتع بخصم خاص على أي دورة تدريبية قادمة في المعهد.</p>
+                                </div>
+                                <div class="reward-footer">
+                                    <span class="reward-cost">500 نقطة</span>
+                                    <button class="btn" onclick="redeemReward(500, 'خصم 20% على الدورات')">استبدال</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reward-card">
+                            <div class="reward-img"><i class="fa-solid fa-book-open"></i></div>
+                            <div class="reward-details">
+                                <div>
+                                    <h5>دورة قصيرة مجانية</h5>
+                                    <p>احصل على دورة تدريبية مصغرة مجاناً في أحد مسارات الذكاء الاصطناعي.</p>
+                                </div>
+                                <div class="reward-footer">
+                                    <span class="reward-cost">1,000 نقطة</span>
+                                    <button class="btn" onclick="redeemReward(1000, 'دورة قصيرة مجانية')">استبدال</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reward-card">
+                            <div class="reward-img"><i class="fa-solid fa-certificate"></i></div>
+                            <div class="reward-details">
+                                <div>
+                                    <h5>شهادة احترافية معتمدة</h5>
+                                    <p>شهادة إتمام معتمدة وموثقة من معهد الخوارزمي للتدريب.</p>
+                                </div>
+                                <div class="reward-footer">
+                                    <span class="reward-cost">800 نقطة</span>
+                                    <button class="btn" onclick="redeemReward(800, 'شهادة احترافية معتمدة')">استبدال</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reward-card">
+                            <div class="reward-img"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="reward-details">
+                                <div>
+                                    <h5>أولوية التسجيل المبكر</h5>
+                                    <p>احجز مقعدك في الدورات الممتلئة والورش الحصرية قبل فتح التسجيل العام.</p>
+                                </div>
+                                <div class="reward-footer">
+                                    <span class="reward-cost">400 نقطة</span>
+                                    <button class="btn" onclick="redeemReward(400, 'أولوية التسجيل المبكر')">استبدال</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reward-card">
+                            <div class="reward-img"><i class="fa-solid fa-chalkboard-user"></i></div>
+                            <div class="reward-details">
+                                <div>
+                                    <h5>ورشة عمل تطبيقي مجانية</h5>
+                                    <p>حضور ورشة عمل حصرية مع خبراء تقنية المعلومات وتطوير الويب.</p>
+                                </div>
+                                <div class="reward-footer">
+                                    <span class="reward-cost">650 نقطة</span>
+                                    <button class="btn" onclick="redeemReward(650, 'ورشة عمل تطبيقي مجانية')">استبدال</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reward-card">
+                            <div class="reward-img"><i class="fa-solid fa-gift"></i></div>
+                            <div class="reward-details">
+                                <div>
+                                    <h5>هدايا معهد الخوارزمي (حقيبة وكوب)</h5>
+                                    <p>حقيبة ظهر أنيقة وكوب حراري ودفتر ملاحظات بشعار المعهد المميز.</p>
+                                </div>
+                                <div class="reward-footer">
+                                    <span class="reward-cost">1,200 نقطة</span>
+                                    <button class="btn" onclick="redeemReward(1200, 'هدايا معهد الخوارزمي (حقيبة وكوب)')">استبدال</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- قسم المستويات -->
+                <section id="tiers" class="card">
+                    <h2 class="card-title"><i class="fa-solid fa-ranking-star"></i> مستويات الولاء والمزايا التصاعدية</h2>
+                    <div class="tiers-showcase">
+                        
+                        <div class="tier-box bronze">
+                            <i class="fa-solid fa-medal"></i>
+                            <h5>Bronze (برونزي)</h5>
+                            <span>0 - 500 نقطة</span>
+                            <p>المستوى الأساسي مع إمكانية جمع النقاط والحصول على خصم 10%.</p>
+                        </div>
+
+                        <div class="tier-box silver">
+                            <i class="fa-solid fa-medal"></i>
+                            <h5>Silver (فضي)</h5>
+                            <span>500 - 1500 نقطة</span>
+                            <p>خصم 15% وأولوية في حضور الورش المجانية القصيرة.</p>
+                        </div>
+
+                        <div class="tier-box gold active-tier">
+                            <i class="fa-solid fa-award"></i>
+                            <h5>Gold (ذهبي)</h5>
+                            <span>1500 - 3000 نقطة</span>
+                            <p>خصم 20%، دورات مجانية، وأولوية كاملة في التسجيل.</p>
+                        </div>
+
+                        <div class="tier-box platinum">
+                            <i class="fa-solid fa-crown"></i>
+                            <h5>Platinum (بلاتيني)</h5>
+                            <span>3000+ نقطة</span>
+                            <p>مزايا VIP كاملة، هدايا سنوية فاخرة، وخصومات استثنائية.</p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- سجل العمليات -->
+                <section id="history" class="card">
+                    <h2 class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> سجل العمليات ونقاط الولاء</h2>
+                    <ul class="log-list" id="activity-log">
+                        <li class="log-item">
+                            <span>اجتياز اختبار الوحدة الخامسة (HTML/CSS)</span>
+                            <div>
+                                <span style="color: #15803d; font-weight:700; margin-left: 10px;">+50 نقطة</span>
+                                <span class="log-time">اليوم، 10:30 صباحاً</span>
+                            </div>
+                        </li>
+                        <li class="log-item">
+                            <span>إتمام درس هيكلة الموقع</span>
+                            <div>
+                                <span style="color: #15803d; font-weight:700; margin-left: 10px;">+20 نقطة</span>
+                                <span class="log-time">أمس، 04:15 مساءً</span>
+                            </div>
+                        </li>
+                        <li class="log-item spent">
+                            <span>استبدال خصم 10% على الدورات التدريبية</span>
+                            <div>
+                                <span style="color: #ef4444; font-weight:700; margin-left: 10px;">-250 نقطة</span>
+                                <span class="log-time">قبل 3 أيام</span>
+                            </div>
+                        </li>
+                        <li class="log-item">
+                            <span>مكافأة تسجيل الدخول اليومي (Streak)</span>
+                            <div>
+                                <span style="color: #15803d; font-weight:700; margin-left: 10px;">+15 نقطة</span>
+                                <span class="log-time">قبل 4 أيام</span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- الإشعارات المنبثقة (Toast) -->
+    <div id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">تمت العملية بنجاح!</span>
+    </div>
+
+    <!-- ربط ملف الـ JavaScript الخارجي -->
+    <script src="script.js"></script>
+</body>
+</html>
