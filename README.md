@@ -1,1 +1,1 @@
-# Educational-Institute-Web-Page
+# Educational Institute Web Page
